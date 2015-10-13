@@ -1,0 +1,15 @@
+.daily-calander {
+	border: solid;
+	width: 30em;
+	height: 40em;
+	margin: 0 auto;
+	margin-top:.05em;
+}
+
+.currentDayAndMonth {
+	margin:  0 auto;
+	border: dotted;
+	width: 30em;
+	height: 4em;
+	margin-top:3em;
+}
