@@ -9,15 +9,16 @@
 .currentDayAndMonth {
 	margin:  0 auto;
 	border: dotted;
+	border-bottom: none;
 	width: 30em;
-	height: 4em;
+	height: 6em;
 	margin-top:3em;
 }
 
 #yearMonth {
 	text-align: center;
 	color: firebrick;
-	font-size: 36px;
+	font-size: 25px;
 }
 
 #date {
@@ -26,3 +27,4 @@
 	font-weight: bold;
 	font-size: 20px;
 }
+

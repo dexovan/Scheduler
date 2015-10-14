@@ -11,7 +11,7 @@ var getCurrentYearMonthDay = (function() {
    
     $('#yearMonth').html(months[monthNum] + ' ' + year);
 
-    function ordinal_suffix_of(dayNum) {
+    var ordinal_suffix_of = function (dayNum) {
         var j = dayNum % 10,
             k = dayNum % 100;
             if (j == 1 && k != 11) {
@@ -31,19 +31,22 @@ var getCurrentYearMonthDay = (function() {
 }());
 
 
-
 var daysOfInMonth = function(year, month){
     var numberOfDays = new Date(year, month, 0);
     return numberOfDays.getDate();
 }
 
-// $("#addEvent").click(function(){
-//     if($('#addToCalander').val() == ''){
-//         console.log("Please enter an event")
-//     } else {
-//       var addedEvent = $('#addToCalander').val()
-//     }
-// })
+$("#addEvent").click(function(){
+    if($('#addToCalander').val() == ''){
+        console.log("Please enter an event")
+        $('#addToCalander').val('');
+    } else {
+      var addedEvent = $('#addToCalander').val()
+      $('#addToCalander').val('');
+    }
+})
+
+
 
 
 var daysOfTheWeek = {
