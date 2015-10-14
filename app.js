@@ -4,12 +4,12 @@ $(document).ready(function(){
 var getCurrentYearMonthDay = (function() {
 
     var months = ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ]
-     var date = new Date();
+    var date = new Date();
     var year = date.getFullYear();
     var monthNum = date.getMonth();
     var dayNum = date.getDay();
    
-     $('#yearMonth').html(months[monthNum] + ' ' + year);
+    $('#yearMonth').html(months[monthNum] + ' ' + year);
 
     function ordinal_suffix_of(dayNum) {
         var j = dayNum % 10,
@@ -32,10 +32,7 @@ var getCurrentYearMonthDay = (function() {
 
 
 
-
-
-
-var daysOfMonth = function(year, month){
+var daysOfInMonth = function(year, month){
     var numberOfDays = new Date(year, month, 0);
     return numberOfDays.getDate();
 }
