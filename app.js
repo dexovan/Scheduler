@@ -1,17 +1,13 @@
 $(document).ready(function(){
-
-
-var getCurrentYearMonthDay = (function() {
-
-    var months = ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ]
-    var date = new Date();
-    var year = date.getFullYear();
-    var monthNum = date.getMonth();
-    var dayNum = date.getDay();
    
-    $('#yearMonth').html(months[monthNum] + ' ' + year);
-
-    var ordinal_suffix_of = function (dayNum) {
+   var monthDayYear = function () {
+      var months = ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ]
+      var date = new Date();
+      var year = date.getFullYear();
+      var monthNum = date.getMonth();
+      var dayNum = date.getDay();
+      
+   var suffix = function (dayNum) {
         var j = dayNum % 10,
             k = dayNum % 100;
             if (j == 1 && k != 11) {
@@ -26,9 +22,17 @@ var getCurrentYearMonthDay = (function() {
                return dayNum + "th";
             }
 
-     $('#date').html(ordinal_suffix_of(dayNum))
+
+    $('#date').html(suffix(dayNum))
+    $('#yearMonth').html(months[monthNum] + ' ' + year);
+
+   }
+
+
+  
    
-}());
+     
+  
 
 
 var daysOfInMonth = function(year, month){
@@ -45,8 +49,6 @@ $("#addEvent").click(function(){
       $('#addToCalander').val('');
     }
 })
-
-
 
 
 var daysOfTheWeek = {
@@ -67,17 +69,13 @@ var daysOfTheWeek = {
                  currentDate.setDate(startDate.getDate() + i);
                  arDates.push(currentDate.getDate() + ' ' +DayAsString[currentDate.getDay()] )
             }
-
-        }
-       
+     }
 };
 
 
 
-
-
-
 daysOfTheWeek.init()
+window.onload = function(){monthDayYear();};
 
 
 
