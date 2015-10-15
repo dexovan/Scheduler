@@ -1,32 +1,30 @@
 $(document).ready(function(){
 
-   var monthsArray = ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ]
+
+
+
+ var monthsArray = ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ]
     var currentDate = new Date();
-    var currentYear = currentDate.getFullYear();
+    var dayNumber = currentDate.getDate()
     var currentMonthNumber = currentDate.getMonth();
-    var currentDayNumber = currentDate.getDay();
-   
- 
-   var suffix = function (currentDayNumber) {
-        var j = currentDayNumber % 10,
-            k = currentDayNumber % 100;
-            if (j == 1 && k != 11) {
-                return currentDayNumber + "st";
-            }
-            if (j == 2 && k != 12) {
-                return currentDayNumber + "nd";
-            }
-            if (j == 3 && k != 13) {
-                return currentDayNumber + "rd";
-            }
-               return currentDayNumber + "th";
-            }
+    var currentYear = currentDate.getFullYear();
 
-
-    $('#yearMonth').html(monthsArray[currentMonthNumber] + ' ' + suffix(currentDayNumber) + ' ' + currentYear);
-
-     
+    var suffix = function (dayNumber) {
+      var j = dayNumber % 10,
+          k = dayNumber % 100;
+          if (j == 1 && k != 11) {
+              return dayNumber + "st";
+          }
+          if (j == 2 && k != 12) {
+              return dayNumber + "nd";
+          }
+          if (j == 3 && k != 13) {
+              return dayNumber + "rd";
+          }
+             return dayNumber + "th";
+          }
   
+   $('#yearMonth').html(monthsArray[currentMonthNumber] + ' ' + suffix(dayNumber) + ' ' + currentYear);
 
 
 var daysOfInMonth = function(year, month){
@@ -45,35 +43,42 @@ $("#addEvent").click(function(){
 })
 
 
-// var daysOfTheWeek = {
-//         init: function() {
-//             this.startDate();
-//         },
-//         startDate: function() {
-//             var startDate = new Date()
-//             var monthNum = startDate.getMonth()
-//             this.nextSevenDays(startDate, 7)       
-//         }, 
-//         nextSevenDays: function(startDate, DaysToAdd){
-//           var arDates = [];
-//           var DayAsString = ['Sunday','Monday','Tuesday','Wednesday','Thursday',
-//           'Friday','Saturday']
-//             for(var i = 0; i <= DaysToAdd; i++){
-//                  var currentDate = new Date();
-//                  currentDate.setDate(startDate.getDate() + i);
-//                  arDates.push(currentDate.getDate() + ' ' +DayAsString[currentDate.getDay()] )
-//             }
-//      }
-// };
+$("#tomorrow").on('click', dayNumber, function(){
+     var tomorrow = dayNumber + 1
+    console.log(tomorrow)
+
+})
+
+var daysOfTheWeek = {
+        init: function() {
+            this.startDate();
+        },
+        startDate: function() {
+            var startDate = new Date()
+            var monthNum = startDate.getMonth()
+            this.nextSevenDays(startDate, 7)       
+        }, 
+        nextSevenDays: function(startDate, DaysToAdd){
+          var arDates = [];
+          var DayAsString = ['Sunday','Monday','Tuesday','Wednesday','Thursday',
+          'Friday','Saturday']
+            for(var i = 0; i <= DaysToAdd; i++){
+                 var currentDate = new Date();
+                 currentDate.setDate(startDate.getDate() + i);
+                 arDates.push(currentDate.getDate() + ' ' +DayAsString[currentDate.getDay()] )
+            }
+     }
+};
 
 
 
-// daysOfTheWeek.init()
+daysOfTheWeek.init()
 
 
 
 window.onload = function(){
-  
+
+
 };
 
 
