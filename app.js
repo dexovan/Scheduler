@@ -1,30 +1,46 @@
 $(document).ready(function(){
 
+var date = {  
 
-
-
- var monthsArray = ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ]
-    var currentDate = new Date();
-    var dayNumber = currentDate.getDate()
-    var currentMonthNumber = currentDate.getMonth();
-    var currentYear = currentDate.getFullYear();
-
-    var suffix = function (dayNumber) {
-      var j = dayNumber % 10,
-          k = dayNumber % 100;
-          if (j == 1 && k != 11) {
-              return dayNumber + "st";
-          }
-          if (j == 2 && k != 12) {
-              return dayNumber + "nd";
-          }
-          if (j == 3 && k != 13) {
-              return dayNumber + "rd";
-          }
-             return dayNumber + "th";
-          }
+  monthsArray: ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ],
+  init: function() {
+   var fullDate = new Date();
+   var monthNumber = fullDate.getMonth();
+   var dayNumber = fullDate.getDay();
+   var calanderYear = fullDate.getFullYear();
+   this.view(calanderYear);
+   this.stringifyMonth(monthNumber)
+  },
+  stringifyMonth: function(monthNumber) {
+    var monthName = this.monthsArray[monthNumber]
+    this.view(monthName)
+  },
+  view: function(){
+    console.log(arguments)
+    $("#date").html()
+  }
+  // suffix: function(dayNumber){
+  //    var j = dayNumber % 10,
+  //         k = dayNumber % 100;
+  //         if (j == 1 && k != 11) {
+  //             return dayNumber + "st";
+  //         }
+  //         if (j == 2 && k != 12) {
+  //             return dayNumber + "nd";
+  //         }
+  //         if (j == 3 && k != 13) {
+  //             return dayNumber + "rd";
+  //         }     
+  //            return dayNumber + "th";
+  // },
   
-   $('#yearMonth').html(monthsArray[currentMonthNumber] + ' ' + suffix(dayNumber) + ' ' + currentYear);
+
+}.init()
+
+
+
+  
+ 
 
 
 var daysOfInMonth = function(year, month){
@@ -43,11 +59,17 @@ $("#addEvent").click(function(){
 })
 
 
-$("#tomorrow").on('click', dayNumber, function(){
-     var tomorrow = dayNumber + 1
-    console.log(tomorrow)
 
-})
+
+// $("#tomorrow").click(function(){
+// var date = new Date();
+// var 
+
+
+
+
+
+// }) 
 
 var daysOfTheWeek = {
         init: function() {
