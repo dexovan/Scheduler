@@ -4,22 +4,30 @@ var date = {
 
   monthsArray: ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ],
   init: function() {
+    var fullDate = new Date();
+    this.dateParsed(fullDate);
+    this.view();
+    this.stringifyMonth()
+  },
+  stringifyMonth: function(monthNumber) {
+   var monthName = this.monthsArray[this.dateParsed()[1]]
+    return monthName
+  },
+  dateParsed: function(fullDate){
    var fullDate = new Date();
    var monthNumber = fullDate.getMonth();
    var dayNumber = fullDate.getDay();
-   var calanderYear = fullDate.getFullYear();
-   this.view(calanderYear);
-   this.stringifyMonth(monthNumber)
-  },
-  stringifyMonth: function(monthNumber) {
-    var monthName = this.monthsArray[monthNumber]
-    this.view(monthName)
+   var calanderYear = fullDate.getFullYear()
+   return [calanderYear, monthNumber]
   },
   view: function(){
-    console.log(arguments)
-    $("#date").html()
+    console.log(this.stringifyMonth() + this.dateParsed()[0])
+
   }
-  // suffix: function(dayNumber){
+
+}.init()
+
+ // suffix: function(dayNumber){
   //    var j = dayNumber % 10,
   //         k = dayNumber % 100;
   //         if (j == 1 && k != 11) {
@@ -34,10 +42,6 @@ var date = {
   //            return dayNumber + "th";
   // },
   
-
-}.init()
-
-
 
   
  
