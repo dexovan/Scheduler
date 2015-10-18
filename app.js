@@ -1,50 +1,30 @@
 $(document).ready(function(){
 
-var date = {  
+var date = {
 
-  monthsArray: ["January", "February","March","April","May","June","July","August", "September", "October", "November","December" ],
+  monthsArray: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
   init: function() {
     var fullDate = new Date();
     this.dateParsed(fullDate);
-    this.view();
-    this.stringifyMonth()
+
+    this.view(fullDate.getMonth());
   },
   stringifyMonth: function(monthNumber) {
-   var monthName = this.monthsArray[this.dateParsed()[1]]
+    var monthName = this.monthsArray[monthNumber]
     return monthName
   },
-  dateParsed: function(fullDate){
-   var fullDate = new Date();
-   var monthNumber = fullDate.getMonth();
-   var dayNumber = fullDate.getDay();
-   var calanderYear = fullDate.getFullYear()
-   return [calanderYear, monthNumber]
+  dateParsed: function(fullDate) {
+    var fullDate = new Date();
+    var monthNumber = fullDate.getMonth();
+    var dayNumber = fullDate.getDate();
+    var calanderYear = fullDate.getFullYear();
+    this.stringifyMonth(monthNumber)
+    return calanderYear
   },
-  view: function(){
-    console.log(this.stringifyMonth() + this.dateParsed()[0])
-
+  view: function(monthName) {
+    console.log(this.stringifyMonth(monthName));
   }
-
-}.init()
-
- // suffix: function(dayNumber){
-  //    var j = dayNumber % 10,
-  //         k = dayNumber % 100;
-  //         if (j == 1 && k != 11) {
-  //             return dayNumber + "st";
-  //         }
-  //         if (j == 2 && k != 12) {
-  //             return dayNumber + "nd";
-  //         }
-  //         if (j == 3 && k != 13) {
-  //             return dayNumber + "rd";
-  //         }     
-  //            return dayNumber + "th";
-  // },
-  
-
-  
- 
+}.init();
 
 
 var daysOfInMonth = function(year, month){
